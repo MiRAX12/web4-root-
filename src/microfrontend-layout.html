@@ -1,25 +1,36 @@
-<single-spa-router>
-  <!--
+<!--<single-spa-router>-->
+<!--    <main>-->
 
-    This is the single-spa Layout Definition for your microfrontends.
-    See https://single-spa.js.org/docs/layout-definition/ for more information.
+<!--        <route default>-->
+<!--            <application name="@kek/web4"></application>-->
+<!--        </route>-->
 
-  -->
+<!--        <route path="main" condition="isAuthenticated">-->
 
-  <!-- Example layouts you might find helpful:
+<!--            <div id="web4M">-->
+<!--                <application name="@kek/web4M"></application>-->
+<!--            </div>-->
 
-  <nav>
-    <application name="@org/navbar"></application>
-  </nav>
-  <route path="settings">
-    <application name="@org/settings"></application>
-  </route>
+<!--            <div id="web4T" style="position: relative; z-index: 2;">-->
+<!--                <application name="@kek/web4T"></application>-->
+<!--            </div>-->
 
-  -->
+<!--        </route>-->
 
-  <main>
-    <route default>
-      <application name="@single-spa/welcome"></application>
-    </route>
-  </main>
+<!--    </main>-->
+<!--</single-spa-router>-->
+<single-spa-router id="single-spa-layout">
+    <main id="main">
+            <application name="@kek/web4M" slot="header"></application>
+                <div class="arrow">
+                    <application name="@kek/web4T"></application>
+                </div>
+            </div>
+        </div>
+    </main>
 </single-spa-router>
+<script>
+    window.isAuthenticated = () => {
+        return !!localStorage.getItem("accessToken");
+    };
+</script>
